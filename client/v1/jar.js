@@ -20,9 +20,9 @@ RequestJar.prototype.rewriteUri = function(uri) {
 };
 
 RequestJar.prototype.setCookie = function(cookieOrStr, uri, options) {
-    var self = this;
+    cookieOrStr = cookieOrStr.replace(/Domain=\.?instagram\.com;\s?/,'');
     uri = this.rewriteUri(uri);
-    return self._jar.setCookieSync(cookieOrStr, uri, options || {});
+    return this._jar.setCookieSync(cookieOrStr, uri, options || {});
 };
 
 RequestJar.prototype.getCookieString = function(uri) {
